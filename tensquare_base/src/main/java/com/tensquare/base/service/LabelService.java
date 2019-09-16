@@ -43,19 +43,19 @@ public class LabelService {
         labelDao.deleteById(id);
     }
 
-   /* public List<Label> findSearch(Label label) {
-        labelDao.findAll(new Specification<Label>() {
-            *//**
+   public List<Label> findSearch(Label label) {
+        return labelDao.findAll(new Specification<Label>() {
+            /**
              *
              * @param root 根对象，也就是要把条件封装到那个对象中。
              * @param criteriaQuery 封装的都是查询关键字，
              * @param criteriaBuilder 用来封装条件对象
              * @return
-             *//*
+             */
             @Override
             public Predicate toPredicate(Root<Label> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
                 return null;
             }
         });
-    }*/
+    }
 }
