@@ -52,6 +52,4 @@ public class LabelController {
         return new Result(true,StatusCode.OK,"查询成功",list);
     }
 
-
-
 }
