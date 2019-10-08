@@ -32,18 +32,18 @@ public class ProblemController {
 	private ProblemService problemService;
 
 	@RequestMapping(value = "/newlist/{labelid}/{page}/{size}",method = RequestMethod.GET)
-	public Result newlist(@PathVariable String lableid,@PathVariable int page, @PathVariable int size){
-		Page<Problem> pagedate = problemService.newlist(lableid,page,size);
+	public Result newlist(@PathVariable String labelid,@PathVariable int page, @PathVariable int size){
+		Page<Problem> pagedate = problemService.newlist(labelid,page,size);
 		return new Result(true,StatusCode.OK,"查询成功", new PageResult<Problem>(pagedate.getTotalElements(),pagedate.getContent()));
 	}
 	@RequestMapping(value = "/hotlist/{labelid}/{page}/{size}",method = RequestMethod.GET)
-	public Result hotlist(@PathVariable String lableid,@PathVariable int page, @PathVariable int size){
-		Page<Problem> pagedate = problemService.hotlist(lableid,page,size);
+	public Result hotlist(@PathVariable String labelid,@PathVariable int page, @PathVariable int size){
+		Page<Problem> pagedate = problemService.hotlist(labelid,page,size);
 		return new Result(true,StatusCode.OK,"查询成功", new PageResult<Problem>(pagedate.getTotalElements(),pagedate.getContent()));
 	}
 	@RequestMapping(value = "/waitlist/{labelid}/{page}/{size}",method = RequestMethod.GET)
-	public Result waitlist(@PathVariable String lableid,@PathVariable int page, @PathVariable int size){
-		Page<Problem> pagedate = problemService.waitlist(lableid,page,size);
+	public Result waitlist(@PathVariable String labelid,@PathVariable int page, @PathVariable int size){
+		Page<Problem> pagedate = problemService.waitlist(labelid,page,size);
 		return new Result(true,StatusCode.OK,"查询成功", new PageResult<Problem>(pagedate.getTotalElements(),pagedate.getContent()));
 	}
 
