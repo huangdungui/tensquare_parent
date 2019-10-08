@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,7 +30,23 @@ public class ProblemController {
 
 	@Autowired
 	private ProblemService problemService;
-	
+
+	@RequestMapping(value = "/newlist/{labelid}/{page}/{size}",method = RequestMethod.GET)
+	public Result newlist(@PathVariable String lableid,@PathVariable int page, @PathVariable int size){
+		Page<Problem> pagedate = problemService.newlist(lableid,page,size);
+		return new Result(true,StatusCode.OK,"查询成功", new PageResult<Problem>(pagedate.getTotalElements(),pagedate.getContent()));
+	}
+	@RequestMapping(value = "/hotlist/{labelid}/{page}/{size}",method = RequestMethod.GET)
+	public Result hotlist(@PathVariable String lableid,@PathVariable int page, @PathVariable int size){
+		Page<Problem> pagedate = problemService.hotlist(lableid,page,size);
+		return new Result(true,StatusCode.OK,"查询成功", new PageResult<Problem>(pagedate.getTotalElements(),pagedate.getContent()));
+	}
+	@RequestMapping(value = "/waitlist/{labelid}/{page}/{size}",method = RequestMethod.GET)
+	public Result waitlist(@PathVariable String lableid,@PathVariable int page, @PathVariable int size){
+		Page<Problem> pagedate = problemService.waitlist(lableid,page,size);
+		return new Result(true,StatusCode.OK,"查询成功", new PageResult<Problem>(pagedate.getTotalElements(),pagedate.getContent()));
+	}
+
 	
 	/**
 	 * 查询全部数据
