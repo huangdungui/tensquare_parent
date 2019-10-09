@@ -33,8 +33,8 @@ public class ArticleController {
 
 
 	@RequestMapping(value = "/examine/{articleId}",method = RequestMethod.GET)
-	public Result examine(@PathVariable String acticleId){
-		articleService.updateState(acticleId);
+	public Result examine(@PathVariable String articleId){
+		articleService.updateState(articleId);
 		return new Result(true,StatusCode.OK,"审核成功");
 	}
 	
